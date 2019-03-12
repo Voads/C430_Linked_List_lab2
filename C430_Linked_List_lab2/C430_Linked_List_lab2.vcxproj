@@ -122,7 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="ListEntry.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

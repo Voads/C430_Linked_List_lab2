@@ -1,63 +1,51 @@
 #pragma once
+#include "DataClass.h"
 #ifndef LISTENTRY_H
 #define LISTENTRY_H
-#include "DataClass.h"
 
-//template<class dataType> 
+template<class Item> 
 class ListEntry {
 
-	DataClass dc;
-	ListEntry *prev;		//previous list entry ptr
-	ListEntry *next;
+	DataClass<Item> dc;
+	ListEntry<Item> *prev;		//previous list entry ptr
+	ListEntry<Item> *next;
 
 public:
-	ListEntry() {
-		//dc = NULL;
-		next = NULL;
-		prev = NULL;
-	}
+	ListEntry();
 
 	//data initializer
-	ListEntry(DataClass data, ListEntry *n, ListEntry *p) : dc(data), next(n), prev(p)
-	{
+	ListEntry(DataClass<Item> &data, ListEntry<Item> *n, ListEntry<Item> *p) {
+		dc = data;
+		next = n;
+		prev = p;
 	}
 
 	//copy constructor
-	ListEntry(ListEntry &le) {
-		dc = le.getData();
-		prev = le.getPrev();
+	ListEntry(ListEntry<Item> &le) {
+		dc = le.getDc();
 		next = le.getNext();
+		prev = le.getPrev();
 	}
 
-	//~ListEntry() {
-	//	if (prev != nullptr)
-	//		delete[] prev;
-	//	if (next != nullptr)
-	//		delete[] next;
-	//}
+	~ListEntry() {
+		if (prev != nullptr)
+			delete prev;
+		if (next != nullptr)
+			delete next;
+	}
 
 	//setters
-	void setData(DataClass data) {
-		dc = data.getDt();
-	}
-	void setPrev(ListEntry *p) {
-		prev = p;
-	}
-	void setNext(ListEntry *n) {
-		next = n;
-	}
+	void setData(DataClass<Item> &data);
+	void setPrev(ListEntry<Item> *p);
+	void setNext(ListEntry<Item> *n);
 
 	//getters
-	DataClass getData() {
-		return dc;
-	}
-	ListEntry *getPrev() {
-		return prev;
-	}
-	ListEntry *getNext() {
-		return next;
-	}
+	DataClass<Item> getDc();
+	ListEntry<Item>* getPrev();
+	ListEntry<Item>* getNext();
 };
 
 
+//#include "DataClass.cpp"
+#include "ListEntry.cpp"
 #endif

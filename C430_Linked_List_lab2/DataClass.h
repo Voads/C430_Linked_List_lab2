@@ -1,54 +1,74 @@
 #pragma once
 #include "Header.h"
-#ifndef DATACLASS_H
-#define DATACLASS_H
+#ifndef DATA_CLASS_H
+#define DATA_CLASS_H
 
-struct dataType {
-	int i;
-	char ch[10];
-	//std::string str;
-	//double db;
-	float fl;
-
-};
-
-//template <class dataType>
-class DataClass {
-
+template <class dataType>
+class DataClass 
+{
+private:
 	dataType d;
-
 public:
 	//constructors
-	DataClass() {
-		//d = NULL;
-	}
+	DataClass();
+	DataClass(dataType &data);
+	//copy con
+	DataClass(DataClass<dataType> &dc);
 
-	DataClass(dataType data) : d(data)
-	{
-	}
-
-	DataClass(DataClass &dc) {
-		d = dc.getDt();
-	}
-
-	/*~DataClass() {
+	//~DataClass() {
+	/*
 		if (d != NULL)
 			delete[] d;
 	}*/
 
 	//accessors and mutators
-	void setDc(dataType data) {
-		d = data;
-	}
-	/*void setDc(DataClass data) {
-		d = data.getDc();
+	void setDt(dataType &data);
+	/*void setDc(DataClass data);
 	}*/
-
-	dataType getDt() {
-		return d;
-	}
-
+	dataType getDt();
+	DataClass<dataType>* getDc();
 };
 
+/*
+	////template <class dataType>
+	//class DataClass {
+	//
+	//	dataType d;
+	//
+	//public:
+		////constructorsDataClass() {
+		//	//d = NULL;
+		//}
+		//
 
+		//DataClass(dataType &data) : d(data)
+		//{
+		//}
+
+		////copy con
+		//DataClass(DataClass &dc) {
+		//	d = dc.getDt();
+		//}
+
+		///*~DataClass() {
+		//	if (d != NULL)
+		//		delete[] d;
+		//}
+
+		////accessors and mutators
+		//void setDt(dataType &data) {
+		//	d = data;
+		//}
+		///*void setDc(DataClass data) {
+		//	d = data.getDc();
+		//}
+
+		//dataType getDt() {
+		//	return d;
+		//}
+
+	//};
+*/
+
+#include "DataClass.cpp"
 #endif 

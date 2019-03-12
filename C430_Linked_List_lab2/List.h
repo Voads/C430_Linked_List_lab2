@@ -4,11 +4,11 @@
 #include "ListEntry.h"
 
 
-//template <class dataType>
+template <class Item>
 class List {
-	ListEntry *head;	//entry at beginning of list; first
-	ListEntry *tail;	//entry at end; last
-	//int count;			//number of list entries
+	ListEntry<Item> *head;	//entry at beginning of list; first
+	ListEntry<Item> *tail;	//entry at end; last
+	//int count;		//number of list entries
 
 public:
 	List() {
@@ -16,7 +16,7 @@ public:
 		tail = nullptr;
 		//count = 0;
 	}
-	List(ListEntry *h, ListEntry *t) : head(h), tail(t) 
+	List(ListEntry<Item> *h, ListEntry<Item> *t) : head(h), tail(t)
 	{
 	}
 	//////copy constructor 
@@ -27,29 +27,28 @@ public:
 	}
 
 	~List() {
-		delete[] head;
-		delete[] tail;
+		if (head != nullptr)
+			delete head;
+		if (tail != nullptr)
+			delete tail;
 	}
 
 	//setters
-	void setHead(ListEntry *newHead) {
+	void setHead(ListEntry<Item> *newHead) {
 		head = newHead;
 	}
-	void setTail(ListEntry *newTail) {
+	void setTail(ListEntry<Item> *newTail) {
 		tail = newTail;
 	}
 
 	//getters
-	ListEntry *getHead() {
+	ListEntry<Item> *getHead() {
 		return head;
 	}
-	ListEntry *getTail() {
+	ListEntry<Item> *getTail() {
 		return tail;
 	}
-	//int getCount() {
-	//	//cycle through linkedlist and count each entry until: (le->getNext() == nullptr)
-	//	return count;
-	//}
+	int getCount();
 
 	//helper functions
 	//ListEntry *search(dataclass &dc) {
@@ -59,17 +58,18 @@ public:
 	//isFull();	//currently no cap to List size
 	//checks if a list is empty
 	bool isEmpty() {
-		if (getHead() == nullptr)
+		if (head == nullptr)
 			return true;
 		else
 			return false;
 	}
 
 	//other 
-	void insertBeg(DataClass data);
-	void insertMid(DataClass data);
-	void insertEnd(DataClass data);
+	void insertBeg(DataClass<Item> &data);
+	void insertMid(DataClass<Item> &data);
+	void insertEnd(DataClass<Item> &data);
 
 };
 
+#include "List.cpp"
 #endif
