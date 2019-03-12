@@ -3,6 +3,7 @@
 #ifndef LISTENTRY_H
 #define LISTENTRY_H
 
+
 template<class Item> 
 class ListEntry {
 
@@ -47,5 +48,5 @@ public:
 
 
 //#include "DataClass.cpp"
-#include "ListEntry.cpp"
+//#include "ListEntry.cpp"
 #endif

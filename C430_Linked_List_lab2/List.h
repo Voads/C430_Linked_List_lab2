@@ -3,7 +3,6 @@
 #define LIST_H
 #include "ListEntry.h"
 
-
 template <class Item>
 class List {
 	ListEntry<Item> *head;	//entry at beginning of list; first
@@ -71,5 +70,5 @@ public:
 
 };
 
-#include "List.cpp"
+//#include "List.cpp"
 #endif
