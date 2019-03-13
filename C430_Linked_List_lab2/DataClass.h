@@ -1,16 +1,20 @@
 #pragma once
-#include "Header.h"
 #ifndef DATA_CLASS_H
 #define DATA_CLASS_H
+#include "Header.h"
 
 template <class dataType>
 class DataClass 
 {
 private:
 	dataType d;
+	//DataClass<dataType> * dt;
 public:
 	//constructors
 	DataClass();
+	//DataClass(std::string s) {
+	//	d = s;
+	//}
 	DataClass(dataType &data);
 	//copy con
 	DataClass(DataClass<dataType> &dc);

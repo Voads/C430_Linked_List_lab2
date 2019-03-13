@@ -4,13 +4,14 @@ template <class dataType>
 DataClass<dataType>::DataClass(){
 	d = NULL;
 }
+
 template <class dataType>
 DataClass<dataType>::DataClass(dataType &data){
 	d = data;
 }
 template <class dataType>
 DataClass<dataType>::DataClass(DataClass<dataType> &dc){
-	d = dc.getData();
+	d = dc.getDt();
 }
 
 //accessors and mutators

@@ -2,6 +2,8 @@
 #ifndef LIST_H
 #define LIST_H
 #include "ListEntry.h"
+#include "Iterator.h"
+
 
 template <class Item>
 class List {
@@ -10,6 +12,7 @@ class List {
 	//int count;		//number of list entries
 
 public:
+	Iterator<Item> iter(*this);
 	List() {
 		head = nullptr;
 		tail = nullptr;
@@ -68,7 +71,8 @@ public:
 	void insertMid(DataClass<Item> &data);
 	void insertEnd(DataClass<Item> &data);
 
+
 };
 
-//#include "List.cpp"
+#include "List.cpp"
 #endif
