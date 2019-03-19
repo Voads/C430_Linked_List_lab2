@@ -7,19 +7,23 @@ template <class Item>
 class Iterator {
 private:
 	ListEntry<Item> *cursor;
-	const List<Item> *list;
+	List<Item> *list;
 
 public:
-	//Iterator();
+	Iterator() {
+		cursor = nullptr;
+		list = nullptr;
+	}
 	Iterator(List<Item> &l) {
 		list = l;
+		cursor = list->getHead();
 	}
-	~Iterator() {
+	/*~Iterator() {
 		if (list != nullptr)
-			delete list
+			delete list;
 		if (cursor != nullptr)
 			delete cursor;
-	}
+	}*/
 
 	//set cursor to start of data structure 
 	void start() {
@@ -29,6 +33,8 @@ public:
 	void getNext() {
 		if (cursor->getNext() != nullptr)
 			cursor = cursor->getNext();
+		else
+			std::cout << "Iterator::getNext(): cursor at end of list... \n";
 		return cursor;
 	}
 

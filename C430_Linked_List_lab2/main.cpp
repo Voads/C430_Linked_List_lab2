@@ -1,6 +1,7 @@
 //#include "DataClass.h"
 //#include "ListEntry.h"
 #include "List.h"
+#include "Iterator.h"
 //#include "Header.h"
 //using namespace list_entry_6A;
 
@@ -14,34 +15,25 @@ int main() {
 	int num = 23;
 	std::string str("hi");
 	DataClass<int> dc(num);
-	//dc.setDt(str);
-	std::cout << dc.getDt() << "\n";
-	
-	//instantiate list
 	List<int> list;
-	ListEntry<int> le;
+	Iterator<int> listIter(list);
+	//dc.setDt(str);
+	//instantiate list
+	list.insertBeg(dc);
+
 	num = 10;
-	dc.setDt(num);
-	le.setData(dc);
+	DataClass<int> dc2(num);
 
-	std::cout << le.getDc().getDt() << std::endl;
 	
-	//list.insertBeg(d);
+	list.insertBeg(dc2);
+	//list.insertMid(dc2);
+	//dc.setDt(num);
+	list.insertEnd(dc);
+	list.insertMid(dc);
 
-	//dt.fl = 21.2f;
-	//d.setDt(dt);
-	//list.insertEnd(d);
-
-	//dt.fl = 00.8f;
-	//d.setDt(dt);
-	//list.insertEnd(d);
-
-	//dt.fl = 1.1f;
-	//d.setDt(dt);
-	//list.insertMid(d);
-
-	//std::cout << "\nlist head:" << list.getHead()->getDc().getDt().fl << "\n";
-	//std::cout << "list tail:" << list.getTail()->getDc().getDt().fl << "\n";
+	std::cout << "\nlist head:" << list.getHead()->getDc().getDt() << "\n";
+	std::cout << "list tail:" << list.getTail()->getDc().getDt() << "\n";
+	std::cout << "list count:" << list.getCount() << "\n";
 
 	std::cin.get();
 	return 0;
